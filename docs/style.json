@@ -14,7 +14,7 @@
     "v": {
       "type": "vector",
       "tiles": [
-        "http://localhost:9966/zxy/{z}/{x}/{y}.pbf"
+        "https://ggim-exercise.github.io/inventory/zxy/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 0,
       "maxzoom": 0
