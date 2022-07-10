@@ -20,7 +20,7 @@
       "maxzoom": 0
     }
   },
-  "sprite": "mapbox://sprites/mapbox/satellite-v8",
+  "sprite": "https://sprites.geolonia.com/basic-color",
   "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
   "layers": [
     {
@@ -42,8 +42,9 @@
       "source-layer": "o",
       "minzoom": 0,
       "maxzoom": 20,
+      "cluster": true,
       "layout": {
-        "icon-image": "art-gallery-15"
+        "icon-image": "marker-stroked-15"
       }
     },
     {
@@ -53,8 +54,9 @@
       "source-layer": "p",
       "minzoom": 0,
       "maxzoom": 20,
+      "cluster": true,
       "layout": {
-        "icon-image": "art-gallery-15"
+        "icon-image": "star-stroked-15"
       }
     }
   ]

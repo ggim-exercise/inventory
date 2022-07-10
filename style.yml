@@ -15,7 +15,7 @@ sources:
       - 'https://ggim-exercise.github.io/inventory/zxy/{z}/{x}/{y}.pbf'
     minzoom: 0
     maxzoom: 0
-sprite: 'mapbox://sprites/mapbox/satellite-v8'
+sprite: 'https://sprites.geolonia.com/basic-color'
 glyphs: 'mapbox://fonts/mapbox/{fontstack}/{range}.pbf'
 layers: 
   - id: background
@@ -31,13 +31,15 @@ layers:
     source-layer: o
     minzoom: 0
     maxzoom: 20
+    cluster: true
     layout: 
-      icon-image: art-gallery-15
+      icon-image: marker-stroked-15
   - id: platforms
     type: symbol
     source: v
     source-layer: p
     minzoom: 0
     maxzoom: 20
+    cluster: true
     layout:
-      icon-image: art-gallery-15
+      icon-image: star-stroked-15

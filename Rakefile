@@ -1,15 +1,20 @@
 require './constants'
 
 task :produce do
+  cmds = []
   SOURCES.each do |r|
-    sh <<-EOS
-ogr2ogr -mapFieldType Date=String -f GeoJSONSeq \
+    cmds << <<-EOS
+(ogr2ogr -mapFieldType Date=String -f GeoJSONSeq \
 /vsistdout #{r[:path]} | \
-LAYER=#{r[:layer]} ruby filter.rb | \
-tippecanoe -f --output-to-directory=docs/zxy \
---minimum-zoom=0 --maximum-zoom=0
+LAYER=#{r[:layer]} ruby filter.rb)
     EOS
   end
+  sh <<-EOS
+(#{cmds.join('; ').gsub("\n", '')}) | \
+tippecanoe -f --output-to-directory=docs/zxy \
+--no-tile-compression \
+--minimum-zoom=0 --maximum-zoom=0
+  EOS
 end
 
 task :host do
