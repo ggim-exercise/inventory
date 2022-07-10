@@ -3,7 +3,9 @@ LAYER = ENV['LAYER']
 
 while gets
   f = JSON.parse($_.strip)
-  f['properties'] = {}
+  f['properties'] = {
+    'a' => 1
+  }
   f['tippecanoe'] = {
     'layer' => LAYER,
     'minzoom' => 0,

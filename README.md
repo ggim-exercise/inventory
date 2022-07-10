@@ -5,7 +5,7 @@ DRR Inventory
 # the portal site
 https://ggim-exercise.github.io/inventory
 
-# restrictions
+# todo
 - `src` data are to be updated after clearance and approval.
 - `LICENSE` should be decided.
 

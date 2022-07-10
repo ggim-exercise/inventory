@@ -1,0 +1,13 @@
+{
+"name": "docs/zxy",
+"description": "docs/zxy",
+"version": "2",
+"minzoom": "0",
+"maxzoom": "0",
+"center": "0.000000,0.000000,0",
+"bounds": "-113.642580,-35.306540,149.126550,64.712586",
+"type": "overlay",
+"format": "pbf",
+"generator": "tippecanoe v1.33.0",
+"json": "{\"vector_layers\": [ { \"id\": \"p\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 0, \"fields\": {\"a\": \"Number\"} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"p\",\"count\": 50,\"geometry\": \"Point\",\"attributeCount\": 1,\"attributes\": [{\"attribute\": \"a\",\"count\": 1,\"type\": \"number\",\"values\": [1],\"min\": 1,\"max\": 1}]}]}}"
+}

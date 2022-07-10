@@ -16,3 +16,7 @@ task :host do
   sh "budo -d docs"
 end
 
+task :style do
+  sh "charites --provider mapbox build style.yml docs/style.json"
+end
+
