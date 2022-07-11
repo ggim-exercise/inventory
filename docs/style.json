@@ -20,7 +20,7 @@
       "maxzoom": 0
     }
   },
-  "sprite": "https://sprites.geolonia.com/basic-color",
+  "sprite": "https://naogify.github.io/twemoji-sprites/icons",
   "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
   "layers": [
     {
@@ -44,7 +44,7 @@
       "maxzoom": 20,
       "cluster": true,
       "layout": {
-        "icon-image": "marker-stroked-15"
+        "icon-image": "office"
       }
     },
     {
@@ -56,7 +56,7 @@
       "maxzoom": 20,
       "cluster": true,
       "layout": {
-        "icon-image": "star-stroked-15"
+        "icon-image": "computer"
       }
     }
   ]
