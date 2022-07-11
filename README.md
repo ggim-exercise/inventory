@@ -5,6 +5,22 @@ DRR Inventory
 # the portal site
 https://ggim-exercise.github.io/inventory
 
+# vector tile design specifications
+## template url
+https://ggim-exercise.github.io/inventory/zxy/{z}/{x}/{y}.pbf
+
+## layers
+### o: organizations
+minzoom: 0
+maxzoom: 0
+
+### p: platforms
+minzoom: 0
+maxzoom: 0
+
+# vector tile style specifications
+See https://github.com/ggim-exercise/inventory/blob/main/style.yml
+
 # todo
 - `src` data are to be updated after clearance and approval.
 - `LICENSE` should be decided.
