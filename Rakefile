@@ -1,6 +1,21 @@
 require './constants'
 
 task :produce do
+  sh <<-EOS
+rake stream | \
+tippecanoe -f --output-to-directory=docs/zxy \
+--no-tile-compression \
+--minimum-zoom=0 --maximum-zoom=0
+  EOS
+end
+
+task :geojson do
+  sh <<-EOS
+rake stream | tippecanoe-json-tool --wrap > docs/inventory.geojson
+  EOS
+end
+
+task :stream do
   cmds = []
   SOURCES.each do |r|
     cmds << <<-EOS
@@ -10,10 +25,7 @@ LAYER=#{r[:layer]} ruby filter.rb)
     EOS
   end
   sh <<-EOS
-(#{cmds.join('; ').gsub("\n", '')}) | \
-tippecanoe -f --output-to-directory=docs/zxy \
---no-tile-compression \
---minimum-zoom=0 --maximum-zoom=0
+(#{cmds.join('; ').gsub("\n", '')})
   EOS
 end
 

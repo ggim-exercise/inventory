@@ -9,10 +9,15 @@
   <style>
     body { margin: 0; padding: 0; }
     #map { position: absolute; top: 0; bottom: 0; width: 100% }
+    #map canvas { cursor: crosshair; }
+    #properties { position: absolute; top: 0; height: 40%; 
+      left: 0; right: 0;
+      overflow: auto; background: rgba(255, 255, 255, 0.8); }
   </style>
 </head>
 <body>
   <div id="map"></div>
+  <!-- <pre id="properties">Yes</pre> -->
   <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGZ1IiwiYSI6ImNsM3FtcDZhdjBicXkzanA3Y2JzNmU2aTgifQ.HynxLHuhHkXyHdhedAgMyA';
 const map = new mapboxgl.Map({
