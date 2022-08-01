@@ -2,27 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Global Disaster Risk Reduction (DRR) Organizations, Geospatial Information Services and Platforms Inventory Hub/title>
+  <title>Global Disaster Risk Reduction (DRR) Organizations, Geospatial Information Services and Platforms Inventory Hub</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
   <style>
-    body { margin: 0; padding: 0; }
+    body { margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
     a { pointer-events: auto; }
+    img#logo { width: 100%; height: 64px; object-fit: contain; }
+    h1 { text-align: center; }
+    h2 { text-align: center; }
+    h3 { text-align: center; }
     #map { position: absolute; top: 0; bottom: 0; width: 100% }
     #map canvas { cursor: pointer; }
     #properties { position: absolute; top: 0; 
       left: 0; right: 0; pointer-events: none; 
-      overflow: auto; background: rgba(255, 255, 255, 0.8); }
+      overflow: auto; background: rgba(242, 242, 242, 0.8); }
   </style>
 </head>
 <body>
   <div id="map"></div>
   <div id="properties">
-    <img src="https://ggim-exercise.github.io/inventory/logo.jpg"></img>
+    <img id="logo" src="https://ggim-exercise.github.io/inventory/logo.jpg"></img>
     <h2>United Nations Global Geospatial Information Management (UN-GGIM) Working Group on Geospatial Information and Services for Disasters</h2>
     <h3>Global Disaster Risk Reduction (DRR) Organizations, Geospatial Information Services and Platforms Inventory Hub</h3>
-    Click icons on the globe to see the information provided.
+    <p>Click icons on the globe to see the information provided.</p>
   </div>
   <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGZ1IiwiYSI6ImNsM3FtcDZhdjBicXkzanA3Y2JzNmU2aTgifQ.HynxLHuhHkXyHdhedAgMyA';
@@ -36,19 +40,26 @@ const map = new mapboxgl.Map({
 })
 const properties = document.getElementById('properties')
 const show = (features) => {
-  let html = ''
+  let html = '<img id="logo" src="https://ggim-exercise.github.io/inventory/logo.jpg"></img>'
   for (let feature of features) {
     console.log(feature)
     switch (feature.layer.id) {
       case 'platforms':
-        html += `<h2><a target="_blank" href="${feature.properties._2_platfor}">${feature.properties._1_from_wh}</a><h2>`
-        html += `<h3>mandate</h3>${feature.properties._4_mandate}`
+        html += `<h2><a target="_blank" href="${feature.properties._2_platfor}">${feature.properties._1_from_wh}</a></h2>`
+        html += `<table>`
+        html += `<tr><th>mandate</th><td>${feature.properties._4_mandate}</td></tr>`
+        html += `<tr><th>hazard</th><td>${feature.properties._8_hazard_.split(",").join(", ")}</td></tr>`
+        html += `<tr><th>data type</th><td>${feature.properties._9_type_of.split(",").join(", ")}</td></tr>`
+        html += `<tr><th>operated by</th><td>${feature.properties._6_operati}</td></tr>`
+        html += `</table>`
         break
       case 'organizations':
-        html += `<h2><a target="_blank" href="${feature.properties._2_platfor}">${feature.properties._1_from_wh}</a><h2>`
-        html += `<h3>mandate</h3>${feature.properties._4_mandate}`
-        html += `<h3>hazard</h3>${feature.properties._8_hazard_.split(",").join(", ")}`
-        html += `<h3>data type</h3>${feature.properties._9_type_of.split(",").join(", ")}`
+        html += `<h2><a target="_blank" href="${feature.properties._2_platfor}">${feature.properties._1_from_wh}</a></h2>`
+        html += `<table>`
+        html += `<tr><th>mandate</th><td>${feature.properties._4_mandate}</td></tr>`
+        html += `<tr><th>hazard</th><td>${feature.properties._8_hazard_.split(",").join(", ")}</td></tr>`
+        html += `<tr><th>data type</th><td>${feature.properties._9_type_of.split(",").join(", ")}</td></tr>`
+        html += `</table>`
         break
       default:
     }
