@@ -2,35 +2,64 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Global Disaster Risk Reduction (DRR) Organizations, Geospatial Information Services and Platforms Inventory Hub/title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css">
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
   <style>
     body { margin: 0; padding: 0; }
+    a { pointer-events: auto; }
     #map { position: absolute; top: 0; bottom: 0; width: 100% }
-    #map canvas { cursor: crosshair; }
-    #properties { position: absolute; top: 0; height: 40%; 
-      left: 0; right: 0;
+    #map canvas { cursor: pointer; }
+    #properties { position: absolute; top: 0; 
+      left: 0; right: 0; pointer-events: none; 
       overflow: auto; background: rgba(255, 255, 255, 0.8); }
   </style>
 </head>
 <body>
   <div id="map"></div>
-  <!-- <pre id="properties">Yes</pre> -->
+  <div id="properties">
+    <img src="https://ggim-exercise.github.io/inventory/logo.jpg"></img>
+    <h2>United Nations Global Geospatial Information Management (UN-GGIM) Working Group on Geospatial Information and Services for Disasters</h2>
+    <h3>Global Disaster Risk Reduction (DRR) Organizations, Geospatial Information Services and Platforms Inventory Hub</h3>
+    Click icons on the globe to see the information provided.
+  </div>
   <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGZ1IiwiYSI6ImNsM3FtcDZhdjBicXkzanA3Y2JzNmU2aTgifQ.HynxLHuhHkXyHdhedAgMyA';
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'style.json',
+  style: 'https://ggim-exercise.github.io/inventory/style.json',
   zoom: 1.5,
   maxZoom: 8,
   center: [0, 0],
   projection: 'globe'
 })
+const properties = document.getElementById('properties')
+const show = (features) => {
+  let html = ''
+  for (let feature of features) {
+    console.log(feature)
+    switch (feature.layer.id) {
+      case 'platforms':
+        html += `<h2><a target="_blank" href="${feature.properties._2_platfor}">${feature.properties._1_from_wh}</a><h2>`
+        html += `<h3>mandate</h3>${feature.properties._4_mandate}`
+        break
+      case 'organizations':
+        html += `<h2><a target="_blank" href="${feature.properties._2_platfor}">${feature.properties._1_from_wh}</a><h2>`
+        html += `<h3>mandate</h3>${feature.properties._4_mandate}`
+        html += `<h3>hazard</h3>${feature.properties._8_hazard_.split(",").join(", ")}`
+        html += `<h3>data type</h3>${feature.properties._9_type_of.split(",").join(", ")}`
+        break
+      default:
+    }
+  }        
+  properties.innerHTML = html
+}
 map.addControl(new mapboxgl.NavigationControl())
 map.on('load', () => {
   map.setFog({})
+  map.on('click', 'platforms', e => show(e.features))
+  map.on('click', 'organizations', e => show(e.features))
 })
   </script>
 </body>
