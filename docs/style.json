@@ -20,7 +20,6 @@
       "maxzoom": 0
     }
   },
-  "sprite": "https://naogify.github.io/twemoji-sprites/icons",
   "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
   "layers": [
     {

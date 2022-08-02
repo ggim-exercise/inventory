@@ -15,7 +15,6 @@ sources:
       - 'https://ggim-exercise.github.io/inventory/zxy/{z}/{x}/{y}.pbf'
     minzoom: 0
     maxzoom: 0
-sprite: 'https://naogify.github.io/twemoji-sprites/icons'
 glyphs: 'mapbox://fonts/mapbox/{fontstack}/{range}.pbf'
 layers: 
   - id: background
