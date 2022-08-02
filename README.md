@@ -5,6 +5,9 @@ DRR Inventory
 # the portal site
 https://ggim-exercise.github.io/inventory
 
+# changelog
+- 2022-08-01: Official Launch in the UN-GGIM WG-Disaster side event in UN Headquarters, New York.
+
 # vector tile design specifications
 ## template url
 https://ggim-exercise.github.io/inventory/zxy/{z}/{x}/{y}.pbf
